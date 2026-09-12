@@ -23,7 +23,7 @@ No administrator rights are needed. The script creates one key with one value un
 ## What should fire
 
 `detection.yml` in this folder is the rule: **Potential Suspicious Registry File Imported Via Reg.EXE** (level: medium).
-It reads `process_creation` events on windows — so your SIEM needs that telemetry before it can catch anything here.
+It reads `process_creation` events on Windows — so your SIEM needs that telemetry before it can catch anything here.
 
 **If something fired:** Your tooling watches for registry values arriving from a file in a temp folder. Good — an intruder wiring up persistence or quietly changing a setting would look the same. On to the next one.
 
@@ -40,8 +40,8 @@ Work down this list before concluding the rule is missing:
    that machine in the last 15 minutes. A silent rule and a silent agent look identical.
 3. **Did the event arrive but the rule not run?** Search for the raw event first — the command line,
    or the file path — then check whether a rule is enabled over it.
-4. **Is the rule scoped to a different field name?** Vendors rename `CommandLine` and `Image`. Map the
-   Sigma field names in `detection.yml` to whatever your platform calls them.
+4. **Is the rule scoped to a different field name?** This rule keys on `Image`, `OriginalFileName`, `CommandLine`.
+   Platforms rename those. Map the Sigma field names in `detection.yml` to whatever yours calls them.
 5. **Is it firing but suppressed?** Check exclusions, tuning rules and alert-suppression windows —
    a detection that is throttled to nothing is indistinguishable from one that does not exist.
 
