@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(LICENSE)",
+      "Write(LICENSE)"
+    ]
+  },
+  "worktree": {
+    "sparsePaths": [
+      "techniques/"
+    ]
+  }
+}
